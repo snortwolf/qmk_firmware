@@ -74,9 +74,13 @@ __attribute__((weak)) void matrix_init_kb(void) { matrix_init_user(); }
 
 __attribute__((weak)) void matrix_scan_kb(void) { matrix_scan_user(); }
 
+__attribute__((weak)) void matrix_report_kb(bool error) { matrix_report_user(error); }
+
 __attribute__((weak)) void matrix_init_user(void) {}
 
 __attribute__((weak)) void matrix_scan_user(void) {}
+
+__attribute__((weak)) void matrix_report_user(bool error) {}
 
 __attribute__((weak)) void matrix_slave_scan_user(void) {}
 
@@ -326,6 +330,7 @@ uint8_t matrix_scan(void) {
         } else {
             error_count = 0;
         }
+        matrix_report_quantum((error_count) ? true : false);
 
         matrix_scan_quantum();
     } else {

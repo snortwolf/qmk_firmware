@@ -214,6 +214,11 @@ void     matrix_init_kb(void);
 void     matrix_scan_kb(void);
 void     matrix_init_user(void);
 void     matrix_scan_user(void);
+#ifdef SPLIT_KEYBOARD
+void     matrix_report_quantum(bool error);
+void     matrix_report_kb(bool error);
+void     matrix_report_user(bool error);
+#endif
 uint16_t get_record_keycode(keyrecord_t *record);
 uint16_t get_event_keycode(keyevent_t event);
 bool     process_action_kb(keyrecord_t *record);

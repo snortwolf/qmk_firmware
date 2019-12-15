@@ -764,6 +764,10 @@ void matrix_init_quantum() {
     matrix_init_kb();
 }
 
+void matrix_report_quantum(bool error) {
+    matrix_report_kb(error);
+}
+
 void matrix_scan_quantum() {
 #if defined(AUDIO_ENABLE) && !defined(NO_MUSIC_MODE)
     matrix_scan_music();
